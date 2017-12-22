@@ -32,6 +32,7 @@ chr_extract.default <- function(x, pat,
                                 invert = FALSE,
                                 na = TRUE,
                                 ...) {
+  stopifnot(is.atomic(x))
   m <- gregexpr(pat, x, ignore.case = ignore.case, ...)
   x <- regmatches(x, m, invert = invert)
   if (na) {
@@ -86,12 +87,14 @@ chr_extract_first <- function(x, pat,
 }
 
 
+
 #' @export
 chr_extract_first.default <- function(x, pat,
                                       ignore.case = FALSE,
                                       invert = FALSE,
                                       na = TRUE,
                                       ...) {
+  stopifnot(is.atomic(x))
   m <- regexpr(pat, x, ignore.case = ignore.case, ...)
   x <- regmatches(x, m, invert = invert)
   if (na) {
@@ -100,6 +103,16 @@ chr_extract_first.default <- function(x, pat,
   as.character(x)
 }
 
+#' @export
+chr_extract_first.list <- function(x, pat,
+                                   ignore.case = FALSE,
+                                   na = TRUE,
+                                   ...) {
+  x <- lapply(
+    x, chr_extract_first, pat = pat, ignore.case = ignore.case,
+    na = na, ...)
+  lapply(x, unlist, recursive = FALSE)
+}
 
 
 #' Extract URL links from text
