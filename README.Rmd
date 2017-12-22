@@ -46,29 +46,61 @@ rt <- rtweet::search_tweets("lang:en", n = 500)
 **Extract** text patterns.
 
 ```{r extract, eval = TRUE}
-## get all there/their/they're
+## some tweets with 'their', 'there', or 'they're'
+rt$text[c(5, 9, 34, 76, 84, 157, 256)]
+
+## extract all there/their/they're
 chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 149, 157, 256)], 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
   "there|their|they\\S?re", 
   ignore.case = TRUE
 )
 
 ## do it again but return single-length values
 chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 149, 157, 256)], 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
   "there|their|they\\S?re", 
   ignore.case = TRUE, 
   collapse = "+"
 )
 
-## extract all URLS
-chr_extract_links(rt$text[1:10])
+## extract first there/their/they're
+chr_extract_first(
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
+  "there|their|they\\S?re", 
+  ignore.case = TRUE
+)
 
-## extract hashtags
+## tweets with URL links
+rt$text[1:3]
+
+## extract all URLS
+chr_extract_links(rt$text[1:3])
+
+## tweet with hashtags
+rt$text[78]
+
+## extract all hashtags
 chr_extract_hashtags(rt$text[78])
 
+## tweet with and without mentions
+rt$text[1:2]
+
 ## extract mentions
-chr_extract_mentions(rt$text[1:10])
+chr_extract_mentions(rt$text[1:2])
+```
+
+### Count
+
+**Count** number of matches.
+
+```{r count, eval = TRUE}
+## extract all there/their/they're
+chr_count(
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
+  "there|their|they\\S?re", 
+  ignore.case = TRUE
+)
 ```
 
 ### Remove
@@ -77,13 +109,13 @@ chr_extract_mentions(rt$text[1:10])
 
 ```{r remove, eval = TRUE}
 ## remove URLS
-chr_remove_links(rt$text[1:10])
+chr_remove_links(rt$text[1:3])
 
 ## string together functions with magrittr pipe
 library(magrittr)
 
 ## remove mentions and extra [white] spaces
-chr_remove_mentions(rt$text[1:10]) %>% 
+chr_remove_mentions(rt$text[1:3]) %>% 
   chr_remove_ws()
 
 ## remove hashtags
@@ -96,8 +128,9 @@ rt$text[78] %>%
   chr_remove_ws()
 
 ## remove links and extract words
-rt$text[1:10] %>%
+rt$text[1:3] %>%
   chr_remove_links() %>%
+  chr_remove_mentions() %>%
   chr_extract_words()
 ```
 
@@ -105,7 +138,15 @@ rt$text[1:10] %>%
 
 **Detect** text patterns.
 
-*in progress*
+```{r detect, eval = TRUE}
+## extract all there/their/they're
+chr_detect(
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
+  "there|their|they\\S?re", 
+  ignore.case = TRUE
+)
+```
+
 
 ### Replace
 
@@ -118,14 +159,14 @@ Also, replace non-ASCII symbols with similar ASCII characters (*work in progress
 ```{r ascii, eval = TRUE}
 ## compare before and after
 Map(
-  identical, chr_replace_nonascii(rt$text[c(1:5, 33, 49, 51, 57, 62)]), 
-  rt$text[c(1:5, 33, 49, 51, 57, 62)], 
+  identical, chr_replace_nonascii(rt$text[c(1, 51, 57, 62)]), 
+  rt$text[c(1, 51, 57, 62)], 
   USE.NAMES = FALSE
 )
 
 ## original
-rt$text[c(33, 49, 51, 57, 62)]
+rt$text[c(51, 57, 62)]
 
 ## ascii version
-chr_replace_nonascii(rt$text[c(33, 49, 51, 57, 62)])
+chr_replace_nonascii(rt$text[c(51, 57, 62)])
 ```
