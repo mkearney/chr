@@ -1,0 +1,119 @@
+---
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+rt <- readRDS(".readme.rds")
+library(chr)
+```
+
+## chr
+
+R package for simple string manipulation
+
+*this package is in early development*
+
+## Description
+
+Clean, wrangle, and parse character [string] vectors using base exclusively base
+R functions.
+
+## Install
+
+```{r install}
+## install from github
+if (!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("mkearney/chr")
+
+## load chr
+library(chr)
+```
+
+## Usage
+
+`chr` offers lightweight functionality similar to
+[`stringr`](https://github.com/tidyverse/stringr). For example, say you have
+some text that needs taming, e.g., Twitter data:
+
+```{r rtweet}
+## get text to manipulate
+rt <- rtweet::search_tweets("lang:en", n = 500)
+```
+
+### Extract
+
+**Extract** text patterns.
+
+```{r extract, eval = TRUE}
+## get all there/their/they're
+chr_extract(
+  rt$text[c(5, 9, 34, 76, 84, 149, 157, 256)], 
+  "there|their|they\\S?re", 
+  ignore.case = TRUE
+)
+
+## do it again but return single-length values
+chr_extract(
+  rt$text[c(5, 9, 34, 76, 84, 149, 157, 256)], 
+  "there|their|they\\S?re", 
+  ignore.case = TRUE, 
+  collapse = "+"
+)
+
+## extract all URLS
+chr_extract_links(rt$text[1:10])
+
+## extract hashtags
+chr_extract_hashtags(rt$text[78])
+```
+
+### Remove
+
+**Remove** text patterns.
+
+```{r remove, eval = TRUE}
+## remove URLS
+chr_remove_links(rt$text[1:10])
+
+## string together functions with magrittr pipe
+library(magrittr)
+
+## remove mentions and extra [white] spaces
+chr_remove_mentions(rt$text[1:10]) %>% 
+  chr_remove_ws()
+
+## remove hashtags
+chr_remove_hashtags(rt$text[78])
+
+## remove hashtags, line breaks, and extra spaces
+rt$text[78] %>%
+  chr_remove_hashtags() %>%
+  chr_remove_linebreaks() %>%
+  chr_remove_ws()
+```
+
+### Detect
+
+**Detect** text patterns.
+
+*in progress*
+
+### ASCII standardization
+
+Coerce non-ASCII symbols into similar ASCII characters (*work in progress*).
+
+```{r ascii, eval = TRUE}
+## compare before and after
+Map(
+  identical, chr_replace_nonascii(rt$text[c(1:5, 33, 49, 51, 57, 62)]), 
+  rt$text[c(1:5, 33, 49, 51, 57, 62)], 
+  USE.NAMES = FALSE
+)
+
+## original
+rt$text[c(1:5, 33, 49, 51, 57, 62)]
+
+## ascii version
+chr_replace_nonascii(rt$text[c(1:5, 33, 49, 51, 57, 62)])
+```

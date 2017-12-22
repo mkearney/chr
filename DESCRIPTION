@@ -1,0 +1,12 @@
+Package: chr
+Type: Package
+Title: Simple String Manipulation
+Version: 0.1.0
+Author: Michael W. Kearney
+Maintainer: Michael W. Kearney <kearneymw@missouri.edu>
+Description: Clean, wrangle, and parse character [string] vectors
+    using base exclusively base R functions.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
