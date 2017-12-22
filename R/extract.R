@@ -100,19 +100,6 @@ chr_extract_first.default <- function(x, pat,
 
 
 
-
-
-chr_remove_links <- function(x) {
-  gsub("https?\\S+", "", x)
-}
-
-chr_extract_words <- function(x) {
-  x <- gsub("https?\\S+", "", x)
-  chr_extract_all(x, "\\S?\\w\\S?")
-}
-
-
-
 #' Extract URL links from text
 #'
 #' Extracts all hyper-links from character vector.
@@ -136,7 +123,11 @@ chr_extract_links <- function(x, collapse = NULL) {
 #' @return Vector of words.
 #' @export
 chr_extract_words <- function(x) {
-  chr_extract(x, "\\w+")
+  ## standardize apostrophes
+  x <- gsub(
+    "[[:alpha:]]+(\u2018|\u2019|\u05F3|\u02B9|\u02Bc|\u02C8|\u0301|\u05F3|\u2032|\uA78C)[[:alpha:]]+",
+    "\u0027", x)
+  chr_extract(x, "\\b[[:alpha:]]+[-']?[[:alpha:]]+\\b|\\b\\w\\b")
 }
 
 #' Extract [at] mentions from text

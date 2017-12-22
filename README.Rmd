@@ -66,6 +66,9 @@ chr_extract_links(rt$text[1:10])
 
 ## extract hashtags
 chr_extract_hashtags(rt$text[78])
+
+## extract mentions
+chr_extract_mentions(rt$text[1:10])
 ```
 
 ### Remove
@@ -91,6 +94,11 @@ rt$text[78] %>%
   chr_remove_hashtags() %>%
   chr_remove_linebreaks() %>%
   chr_remove_ws()
+
+## remove links and extract words
+rt$text[1:10] %>%
+  chr_remove_links() %>%
+  chr_extract_words()
 ```
 
 ### Detect
@@ -99,9 +107,13 @@ rt$text[78] %>%
 
 *in progress*
 
-### ASCII standardization
+### Replace
 
-Coerce non-ASCII symbols into similar ASCII characters (*work in progress*).
+**Replace** text patterns. 
+
+*in progress*
+
+Also, replace non-ASCII symbols with similar ASCII characters (*work in progress*).
 
 ```{r ascii, eval = TRUE}
 ## compare before and after
@@ -112,8 +124,8 @@ Map(
 )
 
 ## original
-rt$text[c(1:5, 33, 49, 51, 57, 62)]
+rt$text[c(33, 49, 51, 57, 62)]
 
 ## ascii version
-chr_replace_nonascii(rt$text[c(1:5, 33, 49, 51, 57, 62)])
+chr_replace_nonascii(rt$text[c(33, 49, 51, 57, 62)])
 ```
