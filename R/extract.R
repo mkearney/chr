@@ -56,8 +56,10 @@ chr_extract.list <- function(x, pat,
                              invert = FALSE,
                              na = TRUE,
                              ...) {
-  lapply(x, chr_extract, pat = pat, ignore.case = ignore.case,
-         collapse = collapse, invert = invert, na = na, ...)
+  x <- lapply(
+    x, chr_extract, pat = pat, ignore.case = ignore.case,
+    collapse = collapse, invert = invert, na = na, ...)
+  lapply(x, unlist, recursive = FALSE)
 }
 
 #' Extract first match from strings
