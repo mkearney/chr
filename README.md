@@ -300,3 +300,18 @@ chr_replace_nonascii(rt$text[c(51, 57, 62)])
     ## [1] "\U0001f3b6\U0001f5e3BAAAAABY, YOU'VE BEEN GIVING ME HELL, YOU KNOW YOU SAID IT YOURSELF.\nThat I would find no other love,\nNow here I am, baby if I could get you up out my head. Maybe for a second now.\n\U0001f3b6I just can't get over youuuu \nChasing my tail like a fool \nGirl you got me going right around"
     ## [2] "You're blessed with some great parents. Setting you up for success tbh https://t.co/dsy8PdTsJf"                                                                                                                                                                                                                       
     ## [3] "I've had a \"get Metro Boomin in the studio with Brian eno\" tweet in my drafts for months feel like that could really help metro level up https://t.co/yAqu93Myf8"
+
+### n-grams
+
+Create **ngram**s at the character.
+
+``` r
+## character vector
+x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
+
+## 2 char level ngram
+chr_ngram_char(x, n = 2L)
+
+## 3 char level ngram in lower case and stripped of punctation and white space
+chr_ngram_char(x, n = 3L, lower = TRUE, punct = TRUE, space = TRUE)
+```
