@@ -136,10 +136,20 @@ rt$text[78]
 
 ``` r
 ## extract all hashtags
-chr_extract_hashtags(rt$text[78])
+chr_extract_hashtags(rt$text[c(40, 41, 77, 78)])
 ```
 
     ## [[1]]
+    ## [1] "Etsy"         "newyearseve"  "2017"         "partydecor"  
+    ## [5] "partyfavor"   "holiday"      "gifts"        "etsychaching"
+    ## 
+    ## [[2]]
+    ## [1] NA
+    ## 
+    ## [[3]]
+    ## [1] "Goldman"   "Bloomberg"
+    ## 
+    ## [[4]]
     ## [1] "loveactually"         "leseigneurdesanneaux" "catalogne"           
     ## [4] "envoyespecial"
 
@@ -256,11 +266,19 @@ chr_detect(
 
 ### Replace
 
-**Replace** text patterns.
+**Replace** text with string.
 
-*in progress*
+``` r
+## some text
+x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
 
-Also, replace non-ASCII symbols with similar ASCII characters (*work in progress*).
+## replace acme with Kearney
+chr_replace(x, "acme", "Kearney", ignore.case = TRUE)
+```
+
+    ## [1] "Kearney Pizza, Inc."         "Tom's Sports Equipment, LLC"
+
+ASCII functions currently *in progress*. For example, replace non-ASCII symbols with similar ASCII characters (*work in progress*).
 
 ``` r
 ## compare before and after
@@ -311,7 +329,24 @@ x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
 
 ## 2 char level ngram
 chr_ngram_char(x, n = 2L)
+```
 
+    ## [[1]]
+    ##  [1] "Ac" "cm" "me" "e " " P" "Pi" "iz" "zz" "za" "a," ", " " I" "In" "nc"
+    ## [15] "c."
+    ## 
+    ## [[2]]
+    ##  [1] "To" "om" "m'" "'s" "s " " S" "Sp" "po" "or" "rt" "ts" "s " " E" "Eq"
+    ## [15] "qu" "ui" "ip" "pm" "me" "en" "nt" "t," ", " " L" "LL" "LC"
+
+``` r
 ## 3 char level ngram in lower case and stripped of punctation and white space
 chr_ngram_char(x, n = 3L, lower = TRUE, punct = TRUE, space = TRUE)
 ```
+
+    ## [[1]]
+    ##  [1] "acm" "cme" "mep" "epi" "piz" "izz" "zza" "zai" "ain" "inc"
+    ## 
+    ## [[2]]
+    ##  [1] "tom" "oms" "mss" "ssp" "spo" "por" "ort" "rts" "tse" "seq" "equ"
+    ## [12] "qui" "uip" "ipm" "pme" "men" "ent" "ntl" "tll" "llc"

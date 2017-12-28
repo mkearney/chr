@@ -81,7 +81,7 @@ chr_extract_links(rt$text[1:3])
 rt$text[78]
 
 ## extract all hashtags
-chr_extract_hashtags(rt$text[78])
+chr_extract_hashtags(rt$text[c(40, 41, 77, 78)])
 
 ## tweet with and without mentions
 rt$text[1:2]
@@ -150,11 +150,18 @@ chr_detect(
 
 ### Replace
 
-**Replace** text patterns. 
+**Replace** text with string.
 
-*in progress*
+```{r replace, eval = TRUE}
+## some text
+x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
 
-Also, replace non-ASCII symbols with similar ASCII characters (*work in progress*).
+## replace acme with Kearney
+chr_replace(x, "acme", "Kearney", ignore.case = TRUE)
+```
+
+ASCII functions currently *in progress*. For example, replace non-ASCII symbols
+with similar ASCII characters (*work in progress*).
 
 ```{r ascii, eval = TRUE}
 ## compare before and after
@@ -176,7 +183,7 @@ chr_replace_nonascii(rt$text[c(51, 57, 62)])
 
 Create **ngram**s at the character.
 
-```{r}
+```{r ngrams, eval = TRUE}
 ## character vector
 x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
 
