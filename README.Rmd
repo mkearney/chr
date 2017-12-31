@@ -51,23 +51,23 @@ rt$text[c(5, 9, 34, 76, 84, 157, 256)]
 
 ## extract all there/their/they're
 chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 
 ## do it again but return single-length values
 chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
-  ignore.case = TRUE, 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
+  ignore.case = TRUE,
   collapse = "+"
 )
 
 ## extract first there/their/they're
 chr_extract_first(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 
@@ -97,8 +97,8 @@ chr_extract_mentions(rt$text[1:2])
 ```{r count, eval = TRUE}
 ## extract all there/their/they're
 chr_count(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 ```
@@ -115,7 +115,7 @@ chr_remove_links(rt$text[1:3])
 library(magrittr)
 
 ## remove mentions and extra [white] spaces
-chr_remove_mentions(rt$text[1:3]) %>% 
+chr_remove_mentions(rt$text[1:3]) %>%
   chr_remove_ws()
 
 ## remove hashtags
@@ -141,8 +141,8 @@ rt$text[1:3] %>%
 ```{r detect, eval = TRUE}
 ## extract all there/their/they're
 chr_detect(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 ```
@@ -166,8 +166,8 @@ with similar ASCII characters (*work in progress*).
 ```{r ascii, eval = TRUE}
 ## compare before and after
 Map(
-  identical, chr_replace_nonascii(rt$text[c(1, 51, 57, 62)]), 
-  rt$text[c(1, 51, 57, 62)], 
+  identical, chr_replace_nonascii(rt$text[c(1, 51, 57, 62)]),
+  rt$text[c(1, 51, 57, 62)],
   USE.NAMES = FALSE
 )
 
@@ -192,4 +192,16 @@ chr_ngram_char(x, n = 2L)
 
 ## 3 char level ngram in lower case and stripped of punctation and white space
 chr_ngram_char(x, n = 3L, lower = TRUE, punct = TRUE, space = TRUE)
+```
+
+### Paste using `+` operator
+
+Paste character vectors using the plus (`+`) operator.
+
+```{r pp, eval = TRUE}
+## paste0 with +
+"This " + "that " + "and the other."
+
+## paste together vectors
+letters + 1:26
 ```

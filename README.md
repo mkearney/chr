@@ -53,8 +53,8 @@ rt$text[c(5, 9, 34, 76, 84, 157, 256)]
 ``` r
 ## extract all there/their/they're
 chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 ```
@@ -83,9 +83,9 @@ chr_extract(
 ``` r
 ## do it again but return single-length values
 chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
-  ignore.case = TRUE, 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
+  ignore.case = TRUE,
   collapse = "+"
 )
 ```
@@ -96,8 +96,8 @@ chr_extract(
 ``` r
 ## extract first there/their/they're
 chr_extract_first(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 ```
@@ -179,8 +179,8 @@ chr_extract_mentions(rt$text[1:2])
 ``` r
 ## extract all there/their/they're
 chr_count(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 ```
@@ -205,7 +205,7 @@ chr_remove_links(rt$text[1:3])
 library(magrittr)
 
 ## remove mentions and extra [white] spaces
-chr_remove_mentions(rt$text[1:3]) %>% 
+chr_remove_mentions(rt$text[1:3]) %>%
   chr_remove_ws()
 ```
 
@@ -256,8 +256,8 @@ rt$text[1:3] %>%
 ``` r
 ## extract all there/their/they're
 chr_detect(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)], 
-  "there|their|they\\S?re", 
+  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
+  "there|their|they\\S?re",
   ignore.case = TRUE
 )
 ```
@@ -283,8 +283,8 @@ ASCII functions currently *in progress*. For example, replace non-ASCII symbols 
 ``` r
 ## compare before and after
 Map(
-  identical, chr_replace_nonascii(rt$text[c(1, 51, 57, 62)]), 
-  rt$text[c(1, 51, 57, 62)], 
+  identical, chr_replace_nonascii(rt$text[c(1, 51, 57, 62)]),
+  rt$text[c(1, 51, 57, 62)],
   USE.NAMES = FALSE
 )
 ```
@@ -350,3 +350,23 @@ chr_ngram_char(x, n = 3L, lower = TRUE, punct = TRUE, space = TRUE)
     ## [[2]]
     ##  [1] "tom" "oms" "mss" "ssp" "spo" "por" "ort" "rts" "tse" "seq" "equ"
     ## [12] "qui" "uip" "ipm" "pme" "men" "ent" "ntl" "tll" "llc"
+
+### Paste using `+` operator
+
+Paste character vectors using the plus (`+`) operator.
+
+``` r
+## paste0 with +
+"This " + "that " + "and the other."
+```
+
+    ## [1] "This that and the other."
+
+``` r
+## paste together vectors
+letters + 1:26
+```
+
+    ##  [1] "a1"  "b2"  "c3"  "d4"  "e5"  "f6"  "g7"  "h8"  "i9"  "j10" "k11"
+    ## [12] "l12" "m13" "n14" "o15" "p16" "q17" "r18" "s19" "t20" "u21" "v22"
+    ## [23] "w23" "x24" "y25" "z26"

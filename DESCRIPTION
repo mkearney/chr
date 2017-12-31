@@ -1,7 +1,7 @@
 Package: chr
 Type: Package
 Title: Simple String Manipulation
-Version: 0.1.0
+Version: 0.1.02
 Author: Michael W. Kearney
 Maintainer: Michael W. Kearney <kearneymw@missouri.edu>
 Description: Clean, wrangle, and parse character [string] vectors
