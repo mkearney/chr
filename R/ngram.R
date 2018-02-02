@@ -19,10 +19,14 @@
 chr_ngram_char <- function(x, n = 3, lower = FALSE, space = FALSE, punct = FALSE) {
   # Input validation
   stopifnot(is.character(x))
-  stopifnot(is.integer(n))
+  if (n != as.integer(n)) stop("arg 'n' must be a whole number")
+  n <- as.integer(n)
   stopifnot(is.logical(lower))
   stopifnot(is.logical(punct))
   stopifnot(is.logical(space))
+
+  # Convert any elements of x that are empty strings to NA.
+  x[x == ""] <- NA_character_
 
   # If arg "lower" is TRUE, make all chars in x lowercase.
   if (isTRUE(lower)) x <- tolower(x)
