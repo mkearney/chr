@@ -6,7 +6,7 @@
 #' @return Vector without URLs.
 #' @export
 chr_remove_links <- function(x) {
-  gsub("https?\\S+", "", x)
+  gsub("https?:[[:graph:]]+", "", x)
 }
 
 #' Remove line breaks from text
@@ -28,7 +28,7 @@ chr_remove_linebreaks <- function(x) {
 #' @return Vector without tabs.
 #' @export
 chr_remove_tabs <- function(x) {
-  gsub("|\\t+", " ", x)
+  gsub("\\t+", " ", x)
 }
 
 #' Remove [at] mentions from text

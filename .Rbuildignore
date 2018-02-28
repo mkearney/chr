@@ -3,3 +3,4 @@
 ^make$
 ^make\.R$
 ^\.readme\.rds$
+^R/plus_paste\.R$
