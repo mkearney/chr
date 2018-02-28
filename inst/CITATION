@@ -4,9 +4,9 @@ citHeader("To cite chr use:")
 citEntry(
     entry        = "Manual",
     title        = "chr: Simple String Manipulation",
-    author       = as.person("Michael W. Kearney"),
-    year         = 2017,
-    note         = "R package version 0.1.02",
+    author       = as.person("Michael Wayne Kearney"),
+    year         = 2018,
+    note         = "R package version 0.1.03",
     url          = "",
     key          = "chr-package",
     textVersion  = paste(

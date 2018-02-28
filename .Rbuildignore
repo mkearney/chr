@@ -4,3 +4,8 @@
 ^make\.R$
 ^\.readme\.rds$
 ^R/plus_paste\.R$
+^LICENSE\.md$
+^CODE_OF_CONDUCT\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

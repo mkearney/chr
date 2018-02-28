@@ -77,5 +77,8 @@ chr_replace_nonascii <- function(x) {
   x <- gsub("\u01C0|\u05C0|\u2223|\u2758", "\u007C", x)
 
   ## tilde
-  gsub("\u02DC|\u0303|\u2053|\u223C|\uFF5E", "\u007E", x)
+  x <- gsub("\u02DC|\u0303|\u2053|\u223C|\uFF5E", "\u007E", x)
+
+  ## convert rest to ascii
+  iconv(x, to = "ascii", sub = "byte")
 }

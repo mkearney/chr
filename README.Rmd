@@ -3,10 +3,9 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
-rt <- readRDS(".readme.rds")
-library(chr)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, collapse = TRUE, comment = "#>")
 ```
+
 
 ## chr
 
@@ -32,127 +31,100 @@ library(chr)
 
 ## Usage
 
-`chr` offers lightweight functionality similar to
-[`stringr`](https://github.com/tidyverse/stringr). For example, say you have
-some text that needs taming, e.g., Twitter data:
+### `chr::detect()`
 
-```{r rtweet}
-## get text to manipulate
-rt <- rtweet::search_tweets("lang:en", n = 500)
+Use `chr_detect()` as a easy to use wrapper for base R's `grep()` and `grepl()` functions.
+
+```{r grep}
+## return logical vector
+chr_detect(letters, "a|b|c|x|y|z")
+
+## return inverted logical values
+chr_detect(letters, "a|b|c|x|y|z", invert = TRUE)
+
+## return matching positions
+chr_detect(letters, "a|b|c|x|y|z", which = TRUE)
+
+## return inverted matching positions
+chr_detect(letters, "a|b|c|x|y|z", which = TRUE, invert = TRUE)
+
+## return matching values
+chr_detect(letters, "a|b|c|x|y|z", value = TRUE)
+
+## return inverted matching values
+chr_detect(letters, "a|b|c|x|y|z", value = TRUE, invert = TRUE)
 ```
 
 ### Extract
 
 **Extract** text patterns.
 
-```{r extract, eval = TRUE}
-## some tweets with 'their', 'there', or 'they're'
-rt$text[c(5, 9, 34, 76, 84, 157, 256)]
-
-## extract all there/their/they're
-chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
-  "there|their|they\\S?re",
-  ignore.case = TRUE
-)
-
-## do it again but return single-length values
-chr_extract(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
-  "there|their|they\\S?re",
-  ignore.case = TRUE,
-  collapse = "+"
-)
-
-## extract first there/their/they're
-chr_extract_first(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
-  "there|their|they\\S?re",
-  ignore.case = TRUE
-)
-
-## tweets with URL links
-rt$text[1:3]
+```{r extract}
+## some strings with 'their', 'there', or 'they're
+x <- c("this one is @there
+  has #MultipleLines https://github.com and 
+  http://twitter.com @twitter",
+  "this @one #istotally their and 
+  some non-ascii symbols: \u00BF \u037E", 
+  "this one is they're https://github.com", 
+  "this one #HasHashtags #afew #ofthem", 
+  "and more @kearneymw at https://mikew.com")
 
 ## extract all URLS
-chr_extract_links(rt$text[1:3])
-
-## tweet with hashtags
-rt$text[78]
+chr_extract_links(x)
 
 ## extract all hashtags
-chr_extract_hashtags(rt$text[c(40, 41, 77, 78)])
-
-## tweet with and without mentions
-rt$text[1:2]
+chr_extract_hashtags(x)
 
 ## extract mentions
-chr_extract_mentions(rt$text[1:2])
+chr_extract_mentions(x)
 ```
 
 ### Count
 
 **Count** number of matches.
 
-```{r count, eval = TRUE}
+```{r count}
 ## extract all there/their/they're
-chr_count(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
-  "there|their|they\\S?re",
-  ignore.case = TRUE
-)
+chr_count(x, "there|their|they\\S?re", ignore.case = TRUE)
 ```
 
 ### Remove
 
 **Remove** text patterns.
 
-```{r remove, eval = TRUE}
+```{r remove}
 ## remove URLS
-chr_remove_links(rt$text[1:3])
+chr_remove_links(x)
 
 ## string together functions with magrittr pipe
 library(magrittr)
 
 ## remove mentions and extra [white] spaces
-chr_remove_mentions(rt$text[1:3]) %>%
+chr_remove_mentions(x) %>%
   chr_remove_ws()
 
 ## remove hashtags
-chr_remove_hashtags(rt$text[78])
+chr_remove_hashtags(x)
 
 ## remove hashtags, line breaks, and extra spaces
-rt$text[78] %>%
+x %>%
   chr_remove_hashtags() %>%
   chr_remove_linebreaks() %>%
   chr_remove_ws()
 
 ## remove links and extract words
-rt$text[1:3] %>%
+x %>%
   chr_remove_links() %>%
   chr_remove_mentions() %>%
   chr_extract_words()
 ```
 
-### Detect
-
-**Detect** text patterns.
-
-```{r detect, eval = TRUE}
-## extract all there/their/they're
-chr_detect(
-  rt$text[c(5, 9, 34, 76, 84, 157, 256)],
-  "there|their|they\\S?re",
-  ignore.case = TRUE
-)
-```
-
-
 ### Replace
 
 **Replace** text with string.
 
-```{r replace, eval = TRUE}
+```{r replace}
 ## some text
 x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
 
@@ -163,27 +135,17 @@ chr_replace(x, "acme", "Kearney", ignore.case = TRUE)
 ASCII functions currently *in progress*. For example, replace non-ASCII symbols
 with similar ASCII characters (*work in progress*).
 
-```{r ascii, eval = TRUE}
-## compare before and after
-Map(
-  identical, chr_replace_nonascii(rt$text[c(1, 51, 57, 62)]),
-  rt$text[c(1, 51, 57, 62)],
-  USE.NAMES = FALSE
-)
-
-## original
-rt$text[c(51, 57, 62)]
-
+```{r ascii}
 ## ascii version
-chr_replace_nonascii(rt$text[c(51, 57, 62)])
+chr_replace_nonascii(x)
 ```
 
 
 ### n-grams
 
-Create **ngram**s at the character.
+Create **ngram**s at the character-level.
 
-```{r ngrams, eval = TRUE}
+```{r ngrams}
 ## character vector
 x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
 
@@ -194,14 +156,6 @@ chr_ngram_char(x, n = 2L)
 chr_ngram_char(x, n = 3L, lower = TRUE, punct = TRUE, space = TRUE)
 ```
 
-### Paste using `+` operator
+### Contributions
 
-Paste character vectors using the plus (`+`) operator.
-
-```{r pp, eval = TRUE}
-## paste0 with +
-"This " + "that " + "and the other."
-
-## paste together vectors
-letters + 1:26
-```
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
