@@ -3,7 +3,8 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE, collapse = TRUE, comment = "#>")
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE, comment = "#>")
+library(chr)
 ```
 
 
@@ -20,9 +21,13 @@ R functions.
 
 ## Install
 
-```{r install}
-## install from github
-if (!requireNamespace("devtools")) install.packages("devtools")
+```{r install, eval=FALSE}
+## install devtools is not alreasy installed
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+
+## install chr from github
 devtools::install_github("mkearney/chr")
 
 ## load chr
@@ -31,9 +36,9 @@ library(chr)
 
 ## Usage
 
-### `chr::detect()`
+### Detect
 
-Use `chr_detect()` as a easy to use wrapper for base R's `grep()` and `grepl()` functions.
+**Detect** text patterns (an easy-to-use wrapper for `base::grep()` and `base::grepl()`).
 
 ```{r grep}
 ## return logical vector
@@ -60,7 +65,7 @@ chr_detect(letters, "a|b|c|x|y|z", value = TRUE, invert = TRUE)
 **Extract** text patterns.
 
 ```{r extract}
-## some strings with 'their', 'there', or 'they're
+## some text strings
 x <- c("this one is @there
   has #MultipleLines https://github.com and 
   http://twitter.com @twitter",
@@ -125,11 +130,8 @@ x %>%
 **Replace** text with string.
 
 ```{r replace}
-## some text
-x <- c("Acme Pizza, Inc.", "Tom's Sports Equipment, LLC")
-
-## replace acme with Kearney
-chr_replace(x, "acme", "Kearney", ignore.case = TRUE)
+## replace their with they're
+chr_replace(x, "their", "they're", ignore.case = TRUE)
 ```
 
 ASCII functions currently *in progress*. For example, replace non-ASCII symbols
