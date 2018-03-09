@@ -55,7 +55,7 @@ chr_remove_hashtags <- function(x) {
 
 
 chr_remove_stopwords <- function(x, stopwords) {
-  stopwords <- std_ascii(stopwords)
+  stopwords <- chr_replace_nonascii(stopwords)
   stopwords <- c(stopwords,
                  title_case(stopwords),
                  toupper(stopwords),

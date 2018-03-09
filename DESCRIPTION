@@ -2,11 +2,10 @@ Package: chr
 Type: Package
 Title: Simple String Manipulation
 Version: 0.1.03
-Authors@R: 
-    person(given = "Michael Wayne",
-           family = "Kearney",
-           email = "kearneymw@missouri.edu",
-           role = c("aut", "cre"))
+Authors@R: person(given = "Michael Wayne",
+    family = "Kearney",
+    email = "kearneymw@missouri.edu",
+    role = c("aut", "cre"))
 Maintainer: Michael W. Kearney <kearneymw@missouri.edu>
 Description: Clean, wrangle, and parse character [string] vectors
     using base exclusively base R functions.
@@ -16,3 +15,5 @@ LazyData: true
 RoxygenNote: 6.0.1.9000
 Imports: 
     magrittr
+Suggests: 
+    testthat

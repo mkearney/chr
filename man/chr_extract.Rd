@@ -2,10 +2,29 @@
 % Please edit documentation in R/extract.R
 \name{chr_extract}
 \alias{chr_extract}
+\alias{chr_extract_first}
+\alias{chr_extract_links}
+\alias{chr_extract_words}
+\alias{chr_extract_mentions}
+\alias{chr_extract_hashtags}
+\alias{chr_extract_phone}
 \title{Extract matches from strings}
 \usage{
 chr_extract(x, pat, ignore.case = FALSE, collapse = NULL, invert = FALSE,
   na = TRUE, ...)
+
+chr_extract_first(x, pat, ignore.case = FALSE, invert = FALSE, na = TRUE,
+  ...)
+
+chr_extract_links(x, collapse = NULL)
+
+chr_extract_words(x, collapse = NULL)
+
+chr_extract_mentions(x, collapse = NULL)
+
+chr_extract_hashtags(x, collapse = NULL)
+
+chr_extract_phone(x, collapse = NULL)
 }
 \arguments{
 \item{x}{Character vector}
@@ -28,7 +47,11 @@ without matches. Defaults to true.}
 }
 \value{
 Vector of matches extracted from input text.
+
+Character vector of matches extracted from input text.
 }
 \description{
 Detect and return all matching patterns from character vector.
+
+Detect and return first matching pattern from character vector.
 }

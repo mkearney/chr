@@ -8,11 +8,9 @@ library(chr)
 ```
 
 
-## chr
+## chr [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 R package for simple string manipulation
-
-*this package is in early development*
 
 ## Description
 

@@ -32,9 +32,7 @@ chr_count.default <- function(x, pat,
 #' @export
 chr_count.list <- function(x, pat,
                              ignore.case = FALSE,
-                             collapse = NULL,
                              invert = FALSE,
-                             na = TRUE,
                              ...) {
   x <- lapply(
     x, chr_count, pat = pat, ignore.case = ignore.case,

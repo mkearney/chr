@@ -1,18 +1,14 @@
 
-chr
----
+## chr [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 R package for simple string manipulation
 
-*this package is in early development*
+## Description
 
-Description
------------
+Clean, wrangle, and parse character \[string\] vectors using base
+exclusively base R functions.
 
-Clean, wrangle, and parse character \[string\] vectors using base exclusively base R functions.
-
-Install
--------
+## Install
 
 ``` r
 ## install devtools is not alreasy installed
@@ -27,12 +23,12 @@ devtools::install_github("mkearney/chr")
 library(chr)
 ```
 
-Usage
------
+## Usage
 
 ### Detect
 
-**Detect** text patterns (an easy-to-use wrapper for `base::grep()` and `base::grepl()`).
+**Detect** text patterns (an easy-to-use wrapper for `base::grep()` and
+`base::grepl()`).
 
 ``` r
 ## return logical vector
@@ -223,7 +219,8 @@ chr_replace(x, "their", "they're", ignore.case = TRUE)
 #> [5] "and more @kearneymw at https://mikew.com"
 ```
 
-ASCII functions currently *in progress*. For example, replace non-ASCII symbols with similar ASCII characters (*work in progress*).
+ASCII functions currently *in progress*. For example, replace non-ASCII
+symbols with similar ASCII characters (*work in progress*).
 
 ``` r
 ## ascii version
@@ -265,4 +262,6 @@ chr_ngram_char(x, n = 3L, lower = TRUE, punct = TRUE, space = TRUE)
 
 ### Contributions
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of
+Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
+to abide by its terms.
