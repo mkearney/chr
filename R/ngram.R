@@ -16,17 +16,17 @@
 #' @export
 #' @author ChrisMuir
 #' @details Thanks to ChrisMuir \(https://github.com/mkearney/chr/issues/1)
-chr_ngram_char <- function(x, n = 3, lower = FALSE, space = FALSE, punct = FALSE) {
+chr_ngram_char <- function(x, n = 3, lower = FALSE, space = FALSE, 
+                           punct = FALSE) {
   # Input validation
   stopifnot(is.character(x))
-  if (n != as.integer(n)) stop("arg 'n' must be a whole number")
+  if (n != as.integer(n) || n < 1) {
+    stop("arg 'n' must be a whole number greater than zero")
+  }
   n <- as.integer(n)
   stopifnot(is.logical(lower))
   stopifnot(is.logical(punct))
   stopifnot(is.logical(space))
-
-  # Convert any elements of x that are empty strings to NA.
-  x[x == ""] <- NA_character_
 
   # If arg "lower" is TRUE, make all chars in x lowercase.
   if (isTRUE(lower)) x <- tolower(x)
@@ -35,7 +35,7 @@ chr_ngram_char <- function(x, n = 3, lower = FALSE, space = FALSE, punct = FALSE
   if (isTRUE(punct)) x <- gsub("[[:punct:]]", "", x)
 
   # If arg "space" is TRUE, remove all white space from x.
-  if (isTRUE(space)) x <- gsub("\\s", "", x)
+  if (isTRUE(space)) x <- gsub("\\s+", "", x)
 
   # Split each element of x into individual chars.
   x <- strsplit(x, "", fixed = TRUE)
@@ -47,7 +47,9 @@ chr_ngram_char <- function(x, n = 3, lower = FALSE, space = FALSE, punct = FALSE
   # Generate ngram tokens.
   n <- n - 1
   lapply(x, function(strings) {
-    vapply(seq_len(length(strings) - n), function(char) {
+    strings_len <- length(strings) - n
+    if (is.na(strings) || strings_len < 0) return(character())
+    vapply(seq_len(strings_len), function(char) {
       paste(strings[char:(char + n)], collapse = "")
     }, character(1))
   })
