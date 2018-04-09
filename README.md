@@ -1,5 +1,7 @@
 
-## chr [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+# chr <img src="man/figures/logo.png" width="160px" align="right" />
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 R package for simple string manipulation
 
