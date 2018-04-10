@@ -10,3 +10,4 @@
 ^docs$
 ^pkgdown$
 ^README\.Rmd$
+^chr-logo\.R$
