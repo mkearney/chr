@@ -6,6 +6,8 @@
 \alias{chr-package}
 \title{chr: Simple String Manipulation}
 \description{
+\if{html}{\figure{logo.png}{options: align='right'}}
+
 Clean, wrangle, and parse character [string] vectors
 using base exclusively base R functions.
 }
