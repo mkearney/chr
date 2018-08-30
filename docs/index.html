@@ -8,10 +8,12 @@
 <title>Simple String Manipulation • chr</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Simple String Manipulation">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Simple String Manipulation">
 <meta property="og:description" content="Clean, wrangle, and parse character [string] vectors
     using base exclusively base R functions.">
+<meta property="og:image" content="https://chr.mikewk.com/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -19,7 +21,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -28,8 +30,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">chr</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">chr</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.3</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -59,18 +65,17 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     
 
     
     
-<div class="contents">
-<div id="chr" class="section level2">
-<h2 class="hasAnchor">
-<a href="#chr" class="anchor"></a>chr</h2>
+<div id="chr" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#chr" class="anchor"></a>chr <img src="reference/figures/logo.png" width="160px" align="right">
+</h1></div>
+
 <p>R package for simple string manipulation</p>
-<p><em>this package is in early development</em></p>
-</div>
 <div id="description" class="section level2">
 <h2 class="hasAnchor">
 <a href="#description" class="anchor"></a>Description</h2>
@@ -79,15 +84,15 @@
 <div id="install" class="section level2">
 <h2 class="hasAnchor">
 <a href="#install" class="anchor"></a>Install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">## install devtools is not alreasy installed</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">## install devtools is not alreasy installed</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(<span class="st">"devtools"</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>)) {</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="kw">install.packages</span>(<span class="st">"devtools"</span>)</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4">}</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">## install chr from github</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">## install chr from github</span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"mkearney/chr"</span>)</a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">## load chr</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">## load chr</span></a>
 <a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">library</span>(chr)</a></code></pre></div>
 </div>
 <div id="usage" class="section level2">
@@ -97,31 +102,31 @@
 <h3 class="hasAnchor">
 <a href="#detect" class="anchor"></a>Detect</h3>
 <p><strong>Detect</strong> text patterns (an easy-to-use wrapper for <code><a href="http://www.rdocumentation.org/packages/base/topics/grep">base::grep()</a></code> and <code><a href="http://www.rdocumentation.org/packages/base/topics/grep">base::grepl()</a></code>).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">## return logical vector</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co">## return logical vector</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="reference/chr_detect.html">chr_detect</a></span>(letters, <span class="st">"a|b|c|x|y|z"</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; [23] FALSE  TRUE  TRUE  TRUE</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">## return inverted logical values</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">## return inverted logical values</span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="reference/chr_detect.html">chr_detect</a></span>(letters, <span class="st">"a|b|c|x|y|z"</span>, <span class="dt">invert =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</span></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; [12]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</span></a>
 <a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; [23]  TRUE FALSE FALSE FALSE</span></a>
 <a class="sourceLine" id="cb2-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">## return matching positions</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">## return matching positions</span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw"><a href="reference/chr_detect.html">chr_detect</a></span>(letters, <span class="st">"a|b|c|x|y|z"</span>, <span class="dt">which =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; [1]  1  2  3 24 25 26</span></a>
 <a class="sourceLine" id="cb2-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">## return inverted matching positions</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">## return inverted matching positions</span></a>
 <a class="sourceLine" id="cb2-18" data-line-number="18"><span class="kw"><a href="reference/chr_detect.html">chr_detect</a></span>(letters, <span class="st">"a|b|c|x|y|z"</span>, <span class="dt">which =</span> <span class="ot">TRUE</span>, <span class="dt">invert =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;  [1]  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</span></a>
 <a class="sourceLine" id="cb2-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21">## return matching values</a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">## return matching values</span></a>
 <a class="sourceLine" id="cb2-22" data-line-number="22"><span class="kw"><a href="reference/chr_detect.html">chr_detect</a></span>(letters, <span class="st">"a|b|c|x|y|z"</span>, <span class="dt">value =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt; [1] "a" "b" "c" "x" "y" "z"</span></a>
 <a class="sourceLine" id="cb2-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25">## return inverted matching values</a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">## return inverted matching values</span></a>
 <a class="sourceLine" id="cb2-26" data-line-number="26"><span class="kw"><a href="reference/chr_detect.html">chr_detect</a></span>(letters, <span class="st">"a|b|c|x|y|z"</span>, <span class="dt">value =</span> <span class="ot">TRUE</span>, <span class="dt">invert =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt;  [1] "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t"</span></a>
 <a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; [18] "u" "v" "w"</span></a></code></pre></div>
@@ -130,7 +135,7 @@
 <h3 class="hasAnchor">
 <a href="#extract" class="anchor"></a>Extract</h3>
 <p><strong>Extract</strong> text patterns.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">## some text strings</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">## some text strings</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"this one is @there</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  has #MultipleLines https://github.com and </span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  http://twitter.com @twitter"</span>,</a>
@@ -140,7 +145,7 @@
 <a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="st">"this one #HasHashtags #afew #ofthem"</span>, </a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="st">"and more @kearneymw at https://mikew.com"</span>)</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">## extract all URLS</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">## extract all URLS</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw"><a href="reference/chr_extract.html">chr_extract_links</a></span>(x)</a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; [1] "https://github.com" "http://twitter.com"</span></a>
@@ -157,7 +162,7 @@
 <a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; [[5]]</span></a>
 <a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; [1] "https://mikew.com"</span></a>
 <a class="sourceLine" id="cb3-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28">## extract all hashtags</a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">## extract all hashtags</span></a>
 <a class="sourceLine" id="cb3-29" data-line-number="29"><span class="kw"><a href="reference/chr_extract.html">chr_extract_hashtags</a></span>(x)</a>
 <a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt; [1] "MultipleLines"</span></a>
@@ -174,7 +179,7 @@
 <a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; [[5]]</span></a>
 <a class="sourceLine" id="cb3-43" data-line-number="43"><span class="co">#&gt; [1] NA</span></a>
 <a class="sourceLine" id="cb3-44" data-line-number="44"></a>
-<a class="sourceLine" id="cb3-45" data-line-number="45">## extract mentions</a>
+<a class="sourceLine" id="cb3-45" data-line-number="45"><span class="co">## extract mentions</span></a>
 <a class="sourceLine" id="cb3-46" data-line-number="46"><span class="kw"><a href="reference/chr_extract.html">chr_extract_mentions</a></span>(x)</a>
 <a class="sourceLine" id="cb3-47" data-line-number="47"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb3-48" data-line-number="48"><span class="co">#&gt; [1] "there"   "twitter"</span></a>
@@ -195,7 +200,7 @@
 <h3 class="hasAnchor">
 <a href="#count" class="anchor"></a>Count</h3>
 <p><strong>Count</strong> number of matches.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## extract all there/their/they're</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">## extract all there/their/they're</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/chr_count.html">chr_count</a></span>(x, <span class="st">"there|their|they</span><span class="ch">\\</span><span class="st">S?re"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; [1] 1 1 1 0 0</span></a></code></pre></div>
 </div>
@@ -203,7 +208,7 @@
 <h3 class="hasAnchor">
 <a href="#remove" class="anchor"></a>Remove</h3>
 <p><strong>Remove</strong> text patterns.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">## remove URLS</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">## remove URLS</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/chr_remove_links.html">chr_remove_links</a></span>(x)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; [1] "this one is @there\n  has #MultipleLines  and \n   @twitter"   </span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [2] "this @one #istotally their and \n  some non-ascii symbols: ¿ ;"</span></a>
@@ -211,10 +216,10 @@
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; [4] "this one #HasHashtags #afew #ofthem"                           </span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; [5] "and more @kearneymw at "</span></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">## string together functions with magrittr pipe</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">## string together functions with magrittr pipe</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw">library</span>(magrittr)</a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">## remove mentions and extra [white] spaces</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">## remove mentions and extra [white] spaces</span></a>
 <a class="sourceLine" id="cb5-13" data-line-number="13"><span class="kw"><a href="reference/chr_remove_mentions.html">chr_remove_mentions</a></span>(x) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="reference/chr_remove_ws.html">chr_remove_ws</a></span>()</a>
 <a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; [1] "this one is has #MultipleLines https://github.com and http://twitter.com"</span></a>
@@ -223,7 +228,7 @@
 <a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; [4] "this one #HasHashtags #afew #ofthem"                                     </span></a>
 <a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; [5] "and more at https://mikew.com"</span></a>
 <a class="sourceLine" id="cb5-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21">## remove hashtags</a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">## remove hashtags</span></a>
 <a class="sourceLine" id="cb5-22" data-line-number="22"><span class="kw"><a href="reference/chr_remove_hashtags.html">chr_remove_hashtags</a></span>(x)</a>
 <a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; [1] "this one is @there\n  has  https://github.com and \n  http://twitter.com @twitter"</span></a>
 <a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; [2] "this @one  their and \n  some non-ascii symbols: ¿ ;"                             </span></a>
@@ -231,7 +236,7 @@
 <a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt; [4] "this one   "                                                                      </span></a>
 <a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt; [5] "and more @kearneymw at https://mikew.com"</span></a>
 <a class="sourceLine" id="cb5-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29">## remove hashtags, line breaks, and extra spaces</a>
+<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">## remove hashtags, line breaks, and extra spaces</span></a>
 <a class="sourceLine" id="cb5-30" data-line-number="30">x <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-31" data-line-number="31"><span class="st">  </span><span class="kw"><a href="reference/chr_remove_hashtags.html">chr_remove_hashtags</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-32" data-line-number="32"><span class="st">  </span><span class="kw"><a href="reference/chr_remove_linebreaks.html">chr_remove_linebreaks</a></span>() <span class="op">%&gt;%</span></a>
@@ -242,7 +247,7 @@
 <a class="sourceLine" id="cb5-37" data-line-number="37"><span class="co">#&gt; [4] "this one"                                                                 </span></a>
 <a class="sourceLine" id="cb5-38" data-line-number="38"><span class="co">#&gt; [5] "and more @kearneymw at https://mikew.com"</span></a>
 <a class="sourceLine" id="cb5-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb5-40" data-line-number="40">## remove links and extract words</a>
+<a class="sourceLine" id="cb5-40" data-line-number="40"><span class="co">## remove links and extract words</span></a>
 <a class="sourceLine" id="cb5-41" data-line-number="41">x <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-42" data-line-number="42"><span class="st">  </span><span class="kw"><a href="reference/chr_remove_links.html">chr_remove_links</a></span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-43" data-line-number="43"><span class="st">  </span><span class="kw"><a href="reference/chr_remove_mentions.html">chr_remove_mentions</a></span>() <span class="op">%&gt;%</span></a>
@@ -268,7 +273,7 @@
 <h3 class="hasAnchor">
 <a href="#replace" class="anchor"></a>Replace</h3>
 <p><strong>Replace</strong> text with string.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">## replace their with they're</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">## replace their with they're</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="reference/chr_replace.html">chr_replace</a></span>(x, <span class="st">"their"</span>, <span class="st">"they're"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; [1] "this one is @there\n  has #MultipleLines https://github.com and \n  http://twitter.com @twitter"</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [2] "this @one #istotally they're and \n  some non-ascii symbols: ¿ ;"                               </span></a>
@@ -276,7 +281,7 @@
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [4] "this one #HasHashtags #afew #ofthem"                                                            </span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; [5] "and more @kearneymw at https://mikew.com"</span></a></code></pre></div>
 <p>ASCII functions currently <em>in progress</em>. For example, replace non-ASCII symbols with similar ASCII characters (<em>work in progress</em>).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">## ascii version</a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co">## ascii version</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="reference/chr_replace_nonascii.html">chr_replace_nonascii</a></span>(x)</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; [1] "this one is @there\n  has #MultipleLines https://github.com and \n  http://twitter.com @twitter"</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; [2] "this @one #istotally their and \n  some non-ascii symbols: ? ;"                                 </span></a>
@@ -288,10 +293,10 @@
 <h3 class="hasAnchor">
 <a href="#n-grams" class="anchor"></a>n-grams</h3>
 <p>Create <strong>ngram</strong>s at the character-level.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">## character vector</a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co">## character vector</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"Acme Pizza, Inc."</span>, <span class="st">"Tom's Sports Equipment, LLC"</span>)</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">## 2 char level ngram</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">## 2 char level ngram</span></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw"><a href="reference/chr_ngram_char.html">chr_ngram_char</a></span>(x, <span class="dt">n =</span> 2L)</a>
 <a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt;  [1] "Ac" "cm" "me" "e " " P" "Pi" "iz" "zz" "za" "a," ", " " I" "In" "nc"</span></a>
@@ -301,7 +306,7 @@
 <a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;  [1] "To" "om" "m'" "'s" "s " " S" "Sp" "po" "or" "rt" "ts" "s " " E" "Eq"</span></a>
 <a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; [15] "qu" "ui" "ip" "pm" "me" "en" "nt" "t," ", " " L" "LL" "LC"</span></a>
 <a class="sourceLine" id="cb8-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14">## 3 char level ngram in lower case and stripped of punctation and white space</a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">## 3 char level ngram in lower case and stripped of punctation and white space</span></a>
 <a class="sourceLine" id="cb8-15" data-line-number="15"><span class="kw"><a href="reference/chr_ngram_char.html">chr_ngram_char</a></span>(x, <span class="dt">n =</span> 3L, <span class="dt">lower =</span> <span class="ot">TRUE</span>, <span class="dt">punct =</span> <span class="ot">TRUE</span>, <span class="dt">space =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt;  [1] "acm" "cme" "mep" "epi" "piz" "izz" "zza" "zai" "ain" "inc"</span></a>
@@ -313,31 +318,54 @@
 <div id="contributions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#contributions" class="anchor"></a>Contributions</h3>
-<p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Report a bug at <br><a href="NA">NA</a>
+</li>
+</ul>
+</div>
+<div class="license">
+<h2>License</h2>
+<ul class="list-unstyled">
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+</ul>
+</div>
+<div class="citation">
 <h2>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing chr</a></li>
 </ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Michael Wayne Kearney <br><small class="roles"> Author, maintainer </small>  </li>
+<li>
+<a href="https://mikewk.com">Michael Wayne Kearney</a> <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
+</div>
+
+      <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
+</ul>
+</div>
 </div>
 
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Michael Wayne Kearney.</p>
+  <p>Developed by <a href="https://mikewk.com">Michael Wayne Kearney</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -346,6 +374,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>
