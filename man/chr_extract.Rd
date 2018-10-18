@@ -10,11 +10,11 @@
 \alias{chr_extract_phone}
 \title{Extract matches from strings}
 \usage{
-chr_extract(x, pat, ignore.case = FALSE, collapse = NULL, invert = FALSE,
-  na = TRUE, ...)
+chr_extract(x, pat, ignore.case = FALSE, collapse = NULL,
+  invert = FALSE, na = TRUE, ...)
 
-chr_extract_first(x, pat, ignore.case = FALSE, invert = FALSE, na = TRUE,
-  ...)
+chr_extract_first(x, pat, ignore.case = FALSE, invert = FALSE,
+  na = TRUE, ...)
 
 chr_extract_links(x, collapse = NULL)
 

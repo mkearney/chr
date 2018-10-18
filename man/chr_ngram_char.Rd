@@ -4,7 +4,8 @@
 \alias{chr_ngram_char}
 \title{Character n-grams}
 \usage{
-chr_ngram_char(x, n = 3, lower = FALSE, space = FALSE, punct = FALSE)
+chr_ngram_char(x, n = 3, lower = FALSE, space = FALSE,
+  punct = FALSE)
 }
 \arguments{
 \item{x}{Character vector}
